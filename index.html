@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
+  <title>For Diya ❤️</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Nunito:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --blush: #ffe4ec;
+      --pink: #ff8fab;
+      --rose: #ff4d6d;
+      --red: #c9184a;
+      --deep: #6a0519;
+      --cream: #fff7f9;
+      --ink: #4a1530;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body { height: 100%; overflow: hidden; }
+    body {
+      font-family: "Nunito", sans-serif;
+      color: var(--ink);
+      background: #2a0712;
+      user-select: none;
+    }
+
+    .sky {
+      position: fixed; inset: 0; pointer-events: none; z-index: 2; overflow: hidden;
+    }
+    .heart-float {
+      position: absolute;
+      bottom: -30px;
+      color: #ff4d6d;
+      font-size: 18px;
+      animation: floatUp linear infinite;
+      opacity: 0.75;
+    }
+    @keyframes floatUp {
+      0% { transform: translateY(0) rotate(0deg) scale(0.7); opacity: 0; }
+      12% { opacity: 0.85; }
+      100% { transform: translateY(-110vh) rotate(40deg) scale(1.15); opacity: 0; }
+    }
+
+    .book { position: relative; height: 100%; }
+    .slide {
+      position: absolute;
+      inset: 0;
+      display: grid;
+      place-items: center;
+      padding: clamp(1.2rem, 4vw, 3rem) clamp(1rem, 5vw, 3.5rem) 5.5rem;
+      opacity: 0;
+      transform: translateX(40px) scale(0.98);
+      pointer-events: none;
+      transition: opacity 0.55s ease, transform 0.55s ease;
+      overflow: hidden;
+    }
+    .slide.active {
+      opacity: 1;
+      transform: none;
+      pointer-events: auto;
+      z-index: 1;
+    }
+    .slide.leave {
+      opacity: 0;
+      transform: translateX(-50px) scale(0.98);
+    }
+
+    .bg-cover { background: radial-gradient(ellipse at 50% 30%, #ff8fab 0%, #c9184a 45%, #4a0518 100%); }
+    .bg-soft { background: linear-gradient(160deg, #fff0f5 0%, #ffd6e3 45%, #ffb3c6 100%); }
+    .bg-deep { background: radial-gradient(circle at 20% 20%, #ff758f, #c9184a 55%, #590d22 100%); color: #fff7f9; }
+    .bg-paper { background: linear-gradient(180deg, #fff7f9, #ffdce6); }
+    .bg-photo { background: #1a060c; padding: 0 0 5.5rem; }
+
+    h1, h2 { font-family: "Playfair Display", serif; font-weight: 600; line-height: 1.05; }
+    .script { font-family: "Great Vibes", cursive; font-weight: 400; }
+
+    .kicker {
+      letter-spacing: 0.32em;
+      text-transform: uppercase;
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: var(--red);
+      margin-bottom: 0.8rem;
+    }
+    .slide.bg-deep .kicker, .slide.bg-cover .kicker { color: #ffc2d1; }
+
+    .title { font-size: clamp(2.6rem, 8vw, 5.4rem); }
+    .script.big { font-size: clamp(3.4rem, 10vw, 6.5rem); color: var(--red); line-height: 1; }
+    .slide.bg-deep .script.big, .slide.bg-cover .script.big { color: #fff; }
+
+    .lede {
+      margin-top: 1rem;
+      max-width: 28rem;
+      line-height: 1.7;
+      font-size: 1.05rem;
+    }
+
+    .stack { text-align: center; max-width: 40rem; }
+    .stack p { margin-top: 0.9rem; line-height: 1.75; font-size: 1.08rem; }
+
+    .seal {
+      width: 120px; height: 120px;
+      margin: 0 auto 1.4rem;
+      border-radius: 50%;
+      background: radial-gradient(circle at 35% 30%, #ff6b81, #c9184a 62%, #800f2f);
+      color: white;
+      display: grid; place-items: center;
+      font-size: 2.6rem;
+      box-shadow: 0 12px 40px rgba(128, 15, 47, 0.45), 0 0 0 10px rgba(255, 255, 255, 0.12);
+      animation: pulse 2.2s ease-in-out infinite;
+    }
+    @keyframes pulse {
+      50% { transform: scale(1.06); }
+    }
+
+    .hint {
+      margin-top: 1.6rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      font-size: 0.72rem;
+      font-weight: 700;
+      opacity: 0.8;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      align-items: center;
+      width: min(1100px, 100%);
+    }
+    .polaroid {
+      background: white;
+      padding: 0.7rem 0.7rem 2.2rem;
+      box-shadow: 0 24px 50px rgba(128, 15, 47, 0.28);
+      transform: rotate(-3deg);
+      max-width: 420px;
+      margin: 0 auto;
+    }
+    .polaroid.right { transform: rotate(3.5deg); }
+    .polaroid img { width: 100%; height: min(58vh, 520px); object-fit: cover; display: block; }
+    .polaroid figcaption {
+      font-family: "Great Vibes", cursive;
+      text-align: center;
+      font-size: 1.7rem;
+      margin-top: 0.7rem;
+      color: var(--red);
+    }
+
+    .photo-full {
+      width: auto; height: auto;
+      max-width: min(420px, 80%);
+      max-height: calc(100% - 14rem);
+      object-fit: contain;
+      position: absolute; top: 1.5rem; left: 50%;
+      transform: translateX(-50%);
+      background: white;
+      padding: 0.7rem;
+      box-shadow: 0 24px 50px rgba(128, 15, 47, 0.28);
+      z-index: 1;
+    }
+    .photo-veil {
+      position: absolute; inset: 0;
+      background: linear-gradient(180deg, rgba(80, 8, 28, 0.05), rgba(80, 8, 28, 0.72));
+    }
+    .photo-copy {
+      position: relative;
+      z-index: 1;
+      align-self: end;
+      justify-self: start;
+      color: white;
+      padding: 0 7vw 1rem;
+      max-width: 36rem;
+    }
+
+    .date {
+      display: inline-block;
+      background: #fff;
+      color: var(--red);
+      padding: 0.28rem 0.75rem;
+      border-radius: 999px;
+      font-size: 0.78rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 0.8rem;
+    }
+    .slide.bg-deep .date { background: rgba(255,255,255,0.16); color: #fff; }
+
+    .quote {
+      font-family: "Playfair Display", serif;
+      font-style: italic;
+      font-size: clamp(1.4rem, 3.5vw, 2rem);
+      color: var(--red);
+    }
+    .slide.bg-deep .quote { color: #ffc2d1; }
+
+    .chips {
+      display: flex; flex-wrap: wrap; justify-content: center; gap: 0.7rem;
+      margin-top: 1.4rem;
+    }
+    .chip {
+      background: white;
+      color: var(--red);
+      border-radius: 999px;
+      padding: 0.55rem 1rem;
+      font-weight: 700;
+      box-shadow: 0 8px 20px rgba(201, 24, 74, 0.15);
+      animation: pop 0.6s ease both;
+    }
+    .chip:nth-child(odd) { animation-delay: 0.05s; }
+    @keyframes pop { from { transform: scale(0.6); opacity: 0; } }
+
+    .prefs {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.8rem;
+      margin-top: 1.5rem;
+      text-align: left;
+    }
+    .pref {
+      background: rgba(255,255,255,0.7);
+      border-radius: 1.1rem;
+      padding: 1rem 1.05rem;
+    }
+    .pref small { color: var(--rose); font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase; font-size: 0.64rem; }
+    .pref h3 { font-size: 1.2rem; margin: 0.2rem 0; }
+
+    .songs { display: grid; gap: 0.75rem; margin-top: 1.2rem; text-align: left; }
+    .song {
+      background: white;
+      border-radius: 1.2rem;
+      padding: 0.95rem 1.1rem;
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 0.85rem;
+      align-items: center;
+    }
+    .song .ico {
+      width: 44px; height: 44px; border-radius: 50%;
+      display: grid; place-items: center;
+      background: linear-gradient(135deg, #ff8fab, #c9184a);
+      color: white; font-size: 1.2rem;
+    }
+
+    .letter {
+      background: #fff;
+      border-radius: 1.4rem;
+      padding: clamp(1.3rem, 4vw, 2.2rem);
+      text-align: left;
+      max-width: 40rem;
+      box-shadow: 0 20px 50px rgba(201, 24, 74, 0.18);
+    }
+    .letter p { margin-top: 0.75rem; line-height: 1.7; }
+    .sign { font-family: "Great Vibes", cursive; font-size: 2.2rem; color: var(--red); }
+
+    .nav {
+      position: fixed;
+      bottom: 1.2rem; left: 0; right: 0;
+      z-index: 5;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 1.2rem;
+      pointer-events: none;
+    }
+    .nav button {
+      pointer-events: auto;
+      width: 58px; height: 58px;
+      border: 0;
+      border-radius: 50%;
+      background: linear-gradient(180deg, #ff758f, #c9184a);
+      color: white;
+      font-size: 1.4rem;
+      box-shadow: 0 10px 24px rgba(201, 24, 74, 0.4);
+      cursor: pointer;
+    }
+    .nav button:disabled { opacity: 0.3; }
+    .dots {
+      pointer-events: none;
+      color: white;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      font-size: 0.8rem;
+      text-shadow: 0 2px 10px rgba(80, 8, 28, 0.45);
+      background: rgba(106, 5, 25, 0.35);
+      padding: 0.4rem 0.8rem;
+      border-radius: 999px;
+    }
+
+    .burst {
+      position: fixed; pointer-events: none; z-index: 8;
+      font-size: 1.2rem; animation: burst 0.9s ease-out forwards;
+    }
+    @keyframes burst {
+      to { transform: translate(var(--x), var(--y)) scale(1.4); opacity: 0; }
+    }
+
+    @media (max-width: 820px) {
+      .hero-grid { grid-template-columns: 1fr; text-align: center; }
+      .hero-grid .lede { margin-inline: auto; }
+      .prefs { grid-template-columns: 1fr; }
+      .polaroid img { height: min(42vh, 360px); }
+    }
+  </style>
+</head>
+<body>
+  <div class="sky" id="sky"></div>
+  <audio id="bgm" src="1.mp3" preload="auto" loop></audio>
+
+  <main class="book" id="book">
+    <section class="slide bg-cover active">
+      <div class="stack" style="color:#fff">
+        <div class="seal">♥</div>
+        <p class="kicker">A gift for</p>
+        <h1 class="script big">Diya</h1>
+        <p class="lede" style="margin-inline:auto">Tap the heart. Every click is another page I kept for you.</p>
+        <p class="hint">Tap anywhere</p>
+      </div>
+    </section>
+
+    <section class="slide bg-deep">
+      <div class="stack">
+        <p class="kicker">Now playing</p>
+        <div class="seal">♪</div>
+        <h2 class="title">O Saathi</h2>
+        <p>for you, Diya.</p>
+      </div>
+    </section>
+
+    <section class="slide bg-soft">
+      <div class="hero-grid">
+        <div>
+          <p class="kicker">From Farhan</p>
+          <h1 class="title">Happy<br>Birthday,</h1>
+          <div class="script big">Diya</div>
+          <p class="lede">Scooty, rain, novels, chooriyan, mango ice cream, a bouquet in your hands. I kept the dates. I kept the songs. I kept you.</p>
+        </div>
+        <figure class="polaroid">
+          <img src="photos/sunlight.jpg" alt="Diya in sunlight" />
+          <figcaption>you, in the sun</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="slide bg-photo">
+      <img class="photo-full" src="photos/blue.jpg" alt="Diya in light blue" />
+      <div class="photo-veil"></div>
+      <div class="photo-copy">
+        <p class="kicker">Favourite colour</p>
+        <h2 class="title">Light blue,<br>and you in it.</h2>
+      </div>
+    </section>
+
+    <section class="slide bg-photo">
+      <img class="photo-full" src="photos/teal.jpg" alt="Diya smiling" />
+      <div class="photo-veil"></div>
+      <div class="photo-copy">
+        <h2 class="script big">that smile.</h2>
+        <p class="lede">Unguarded. I would collect it if I could.</p>
+      </div>
+    </section>
+
+    <section class="slide bg-photo">
+      <img class="photo-full" src="photos/garden.jpg" alt="Diya in the garden" />
+      <div class="photo-veil"></div>
+      <div class="photo-copy">
+        <h2 class="title">A painting<br>I got to keep.</h2>
+        <p class="lede">Red cloth, green leaves, chooriyan somewhere in the day.</p>
+      </div>
+    </section>
+
+    <section class="slide bg-deep">
+      <div class="stack">
+        <p class="kicker">Our story</p>
+        <h1 class="title">How we<br>happened</h1>
+        <p class="lede" style="margin-inline:auto">One date at a time. Tap through them. Do not rush the ones that still make your chest tight.</p>
+      </div>
+    </section>
+
+    <section class="slide bg-soft">
+      <div class="stack">
+        <span class="date">10 July 2025</span>
+        <h2 class="title">Jhol, on a story</h2>
+        <p>The first story I put. The song was <em>Jhol</em>. That is where this starts, for me.</p>
+      </div>
+    </section>
+
+    <section class="slide bg-paper">
+      <div class="stack">
+        <span class="date">15 January 2026</span>
+        <h2 class="title">The first Urdu</h2>
+        <p>Through Mehak. You wrote:</p>
+        <p class="quote">“Ok ggg gesa ap kahe.”</p>
+        <p>Small. Soft. I still hear it.</p>
+      </div>
+    </section>
+
+    <section class="slide bg-soft">
+      <div class="stack">
+        <span class="date">27 January 2026</span>
+        <h2 class="title">Notes, on Instagram</h2>
+        <p>The first message from you, sitting in the notes. I opened it like it might disappear.</p>
+      </div>
+    </section>
+
+    <section class="slide bg-deep">
+      <div class="stack">
+        <span class="date">6 June 2026</span>
+        <h2 class="title">Your first time saying I love you to me</h2>
+        <p>I have been answering it ever since.</p>
+      </div>
+    </section>
+
+    <section class="slide bg-paper">
+      <div class="stack">
+        <span class="date">7 June 2026 · 11:55 pm</span>
+        <h2 class="title">The first time you cried because of me</h2>
+        <p>I am sorry for the hour. I am not sorry that I matter enough to make your eyes wet. I will be gentler with that power.</p>
+      </div>
+    </section>
+
+    <section class="slide bg-soft">
+      <div class="stack">
+        <span class="date">25 June 2026</span>
+        <h2 class="script big">will you marry me</h2>
+        <p>You asked. Not as a joke I could throw away. As if the rest of our lives had already started knocking.</p>
+      </div>
+    </section>
+
+    <section class="slide bg-deep">
+      <div class="stack">
+        <span class="date">29 June 2026</span>
+        <h2 class="title">Strawberry & chocolate</h2>
+        <p>You were explaining lipstick tastes. I was not really talking about lipstick. I was talking about wanting to know how you taste.</p>
+      </div>
+    </section>
+
+    <section class="slide bg-paper">
+      <div class="stack">
+        <span class="date">30 June 2026</span>
+        <h2 class="title">You dreamt of us</h2>
+        <p>You told me you dreamt of us kissing. I slept differently after that, knowing I was already in your night.</p>
+      </div>
+    </section>
+
+    <section class="slide bg-soft">
+      <div class="stack">
+        <span class="date">6 July 2026 · 12:00 pm</span>
+        <h2 class="title">In the car</h2>
+        <p>Noon. The two of us. We said I love you to each other, out loud, where the road could hear it.</p>
+      </div>
+    </section>
+
+    <section class="slide bg-deep">
+      <div class="stack">
+        <span class="date">24 July 2026</span>
+        <h2 class="title">Amir Hotel, night</h2>
+        <p>Raat ka khana. And for a little while I held your hand, as if the table, the hotel, the whole evening had been built for that small brave thing.</p>
+      </div>
+    </section>
+
+    <section class="slide bg-soft">
+      <div class="stack">
+        <p class="kicker">I pay attention</p>
+        <h2 class="title">What Diya loves</h2>
+        <div class="chips">
+          <span class="chip">Scooty ♥</span>
+          <span class="chip">Horse riding</span>
+          <span class="chip">Novels</span>
+          <span class="chip">Poetry</span>
+          <span class="chip">Rain</span>
+          <span class="chip">Cookinggg</span>
+          <span class="chip">Bouquets</span>
+          <span class="chip">Chooriyan</span>
+          <span class="chip">Light blue</span>
+          <span class="chip">Mango ice cream</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="slide bg-paper">
+      <div class="stack">
+        <h2 class="title">Favourites</h2>
+        <div class="prefs">
+          <article class="pref"><small>Song</small><h3>Naray Baran De</h3><p>Wajid Layaq</p></article>
+          <article class="pref"><small>Colour</small><h3>Light blue</h3><p>Always.</p></article>
+          <article class="pref"><small>Character</small><h3>Jabal Ijlal Khan</h3><p>Yours.</p></article>
+          <article class="pref"><small>Rules</small><h3>Her cooking. Not a clean shave.</h3><p>I can live with both.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="slide bg-soft">
+      <div class="stack" style="max-width:32rem">
+        <h2 class="title">What we play</h2>
+        <div class="songs">
+          <article class="song"><div class="ico">♪</div><div><small>Farhan puts on</small><h3>Jhol — with Papino Aunty</h3></div></article>
+          <article class="song"><div class="ico">♥</div><div><small>Diya asks for</small><h3>Gul Bano</h3></div></article>
+          <article class="song"><div class="ico">♥</div><div><small>Diya asks for</small><h3>Dilruba Na Raazi</h3></div></article>
+          <article class="song"><div class="ico">♡</div><div><small>Diya says</small><h3>Da khuklee da</h3></div></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="slide bg-paper">
+      <div class="letter">
+        <p class="kicker">Read slowly</p>
+        <h2 class="script" style="font-size:2.8rem;color:var(--red)">Diya.</h2>
+        <p>I did not want to give you a page that could belong to anyone. The rain. The chooriyan. The mango. The first shy Urdu. The notes. The night you cried. The afternoon in the car. The hotel, and how briefly I held your hand.</p>
+        <p>You asked me if I would marry you. I am still walking toward that question as if it is a door I already know the colour of.</p>
+        <p>Be light blue. Be the girl who likes her own cooking and other people’s poetry. Be the one who says da khuklee da when a song is right.</p>
+        <p>I love you. I said it in the car. I am saying it here, where you can keep it.</p>
+        <p class="sign">Farhan</p>
+      </div>
+    </section>
+
+    <section class="slide bg-cover">
+      <div class="stack" style="color:#fff">
+        <div class="seal">♥</div>
+        <h1 class="title">Happy birthday,<br><span class="script" style="font-size:1.15em">my Diya.</span></h1>
+        <p class="lede" style="margin-inline:auto">From the boy who kept the dates.</p>
+      </div>
+    </section>
+  </main>
+
+  <nav class="nav">
+    <button type="button" id="prev" aria-label="Previous page">‹</button>
+    <div class="dots" id="dots">1 / 20</div>
+    <button type="button" id="next" aria-label="Next page">›</button>
+  </nav>
+
+  <script>
+    const slides = [...document.querySelectorAll(".slide")];
+    const dots = document.getElementById("dots");
+    const prevBtn = document.getElementById("prev");
+    const nextBtn = document.getElementById("next");
+    let i = 0;
+    let locked = false;
+
+    const sky = document.getElementById("sky");
+    for (let n = 0; n < 22; n += 1) {
+      const h = document.createElement("div");
+      h.className = "heart-float";
+      h.textContent = n % 4 === 0 ? "♡" : "♥";
+      h.style.left = Math.random() * 100 + "vw";
+      h.style.fontSize = 12 + Math.random() * 22 + "px";
+      h.style.animationDuration = 8 + Math.random() * 10 + "s";
+      h.style.animationDelay = Math.random() * 8 + "s";
+      h.style.color = ["#ff4d6d", "#ff8fab", "#c9184a", "#ffffff"][n % 4];
+      sky.appendChild(h);
+    }
+
+    function burst(x, y) {
+      for (let n = 0; n < 8; n += 1) {
+        const el = document.createElement("div");
+        el.className = "burst";
+        el.textContent = "♥";
+        el.style.left = x + "px";
+        el.style.top = y + "px";
+        el.style.color = n % 2 ? "#ff4d6d" : "#fff";
+        const angle = (Math.PI * 2 * n) / 8;
+        el.style.setProperty("--x", Math.cos(angle) * 70 + "px");
+        el.style.setProperty("--y", Math.sin(angle) * 70 + "px");
+        document.body.appendChild(el);
+        setTimeout(() => el.remove(), 900);
+      }
+    }
+
+    const bgm = document.getElementById("bgm");
+    bgm.play().catch(() => {});
+    ["pointerdown", "keydown", "touchstart"].forEach((ev) =>
+      document.addEventListener(ev, () => { if (bgm.paused) bgm.play().catch(() => {}); }, { once: true, capture: true })
+    );
+
+    function go(to, x, y) {
+      if (locked || to === i || to < 0 || to >= slides.length) return;
+      locked = true;
+      slides[i].classList.add("leave");
+      slides[i].classList.remove("active");
+      i = to;
+      slides[i].classList.remove("leave");
+      slides[i].classList.add("active");
+      dots.textContent = i + 1 + " / " + slides.length;
+      prevBtn.disabled = i === 0;
+      nextBtn.disabled = i === slides.length - 1;
+      if (x != null) burst(x, y);
+      setTimeout(() => { locked = false; }, 480);
+    }
+
+    prevBtn.addEventListener("click", (e) => {
+      e.stopPropagation();
+      go(i - 1, e.clientX, e.clientY);
+    });
+    nextBtn.addEventListener("click", (e) => {
+      e.stopPropagation();
+      go(i + 1, e.clientX, e.clientY);
+    });
+
+    document.addEventListener("click", (e) => {
+      if (e.target.closest("button")) return;
+      go(i + 1, e.clientX, e.clientY);
+    });
+
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "ArrowRight" || e.key === " ") go(i + 1, innerWidth / 2, innerHeight / 2);
+      if (e.key === "ArrowLeft") go(i - 1, innerWidth / 2, innerHeight / 2);
+    });
+
+    let startX = 0;
+    document.addEventListener("touchstart", (e) => { startX = e.changedTouches[0].clientX; }, { passive: true });
+    document.addEventListener("touchend", (e) => {
+      const dx = e.changedTouches[0].clientX - startX;
+      if (dx < -40) go(i + 1, e.changedTouches[0].clientX, e.changedTouches[0].clientY);
+      if (dx > 40) go(i - 1, e.changedTouches[0].clientX, e.changedTouches[0].clientY);
+    }, { passive: true });
+
+    dots.textContent = "1 / " + slides.length;
+    prevBtn.disabled = true;
+  </script>
+</body>
+</html>
